@@ -1,0 +1,16 @@
+article {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 50px;
+}
+
+#main p {
+  font-size: 40px;
+  font-family: 'Segoe UI' , sans-serif;
+  font-weight: 500;
+}
+
+#main {
+  text-align: center;
+  font-style: italic;
+}

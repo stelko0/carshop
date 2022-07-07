@@ -1,0 +1,19 @@
+#contacts {
+  padding: 6rem;
+  text-align: left;
+}
+
+#contacts h2 {
+  font-size: 38px;
+}
+
+#contacts ul {
+  list-style: none;
+}
+
+#contacts ul li {
+  font-size: 26px;
+  padding-left: 10px;
+  padding-top: 10px;
+
+}

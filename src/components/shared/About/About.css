@@ -1,0 +1,14 @@
+#about {
+  text-align: left;
+  padding:6rem;
+}
+
+#about h2 {
+  font-size: 38px;
+}
+
+#about p {
+  width: 50%;
+  font-size: 28px;
+  font-weight: 300;
+}

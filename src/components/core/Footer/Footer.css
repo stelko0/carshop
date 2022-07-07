@@ -1,0 +1,27 @@
+footer {
+  font-family: Segoe UI, sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #33ac64;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+footer h1 {
+  font-size: 34px;
+  display: block;
+}
+footer p {
+  display: block;
+  font-size: 22px;
+}
+
+#footer {
+  position: relative;
+  min-height: 100vh;
+  /* min-height: calc(100vh - 20px); */
+}
