@@ -1,61 +1,48 @@
+import { ref, onValue } from 'firebase/database';
+import { getDatabase } from 'firebase/database';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Catalog.css';
-import third from './img/third.jpg';
 
 export default function Catalog() {
+  const [cars, setCars] = useState([]);
+  const db = getDatabase();
+  useEffect(() => {
+    onValue(ref(db), (snapshot) => {
+      const data = snapshot.val();
+      if (data !== null) {
+        Object.values(data).map((item) => {
+          setCars(item);
+        });
+      }
+    });
+  }, []);
+
   return (
     <section id="catalog">
       <h1>Catalog</h1>
       <ul id="listing">
-        <li>
-          <img className="thumbnail" src={third} alt="thirdImg" />
-          <h3>Audi 90</h3>
-          <h5>Fuel: Petrol</h5>
-          <h5>Millage: 55,000km</h5>
-          <div className="info">
-            <h5 className="price">Price: 22,000$</h5>
-            <h5 className="person">Person / Pleven</h5>
-          </div>
-        </li>
-        <li>
-          <img className="thumbnail" src={third} alt="thirdImg" />
-          <h3>Audi 90</h3>
-          <h5>Fuel: Petrol</h5>
-          <h5>Millage: 55,000km</h5>
-          <div className="info">
-            <h5 className="price">Price: 22,000$</h5>
-            <h5 className="person">Person / Pleven</h5>
-          </div>
-        </li>
-        <li>
-          <img className="thumbnail" src={third} alt="thirdImg" />
-          <h3>Audi 90</h3>
-          <h5>Fuel: Petrol</h5>
-          <h5>Millage: 55,000km</h5>
-          <div className="info">
-            <h5 className="price">Price: 22,000$</h5>
-            <h5 className="person">Person / Pleven</h5>
-          </div>
-        </li>
-        <li>
-          <img className="thumbnail" src={third} alt="thirdImg" />
-          <h3>Audi 90</h3>
-          <h5>Fuel: Petrol</h5>
-          <h5>Millage: 55,000km</h5>
-          <div className="info">
-            <h5 className="price">Price: 22,000$</h5>
-            <h5 className="person">Person / Pleven</h5>
-          </div>
-        </li>
-        <li>
-          <img className="thumbnail" src={third} alt="thirdImg" />
-          <h3>Audi 90</h3>
-          <h5>Fuel: Petrol</h5>
-          <h5>Millage: 55,000km</h5>
-          <div className="info">
-            <h5 className="price">Price: 22,000$</h5>
-            <h5 className="person">Person / Pleven</h5>
-          </div>
-        </li>
+        {cars.length === 0 ? (
+          <h1>No cars in database!</h1>
+        ) : (
+          Object.entries(cars).map((key) => {
+            return (
+              <Link to={`/details/${key[0]}`}>
+                <li>
+                  <h3>
+                    {key[1].brand} {key[1].model}
+                  </h3>
+                  <h5>Fuel: {key[1].engine}</h5>
+                  <h5>Millage: {key[1].millage} km</h5>
+                  <div className="info">
+                    <h5 className="price">Price: {key[1].price}$</h5>
+                  </div>
+                </li>
+              </Link>
+            );
+          })
+        )}
       </ul>
     </section>
   );

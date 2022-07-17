@@ -11,6 +11,8 @@ import Catalog from './components/shared/Catalog/Catalog';
 import Register from './components/auth/Register/Register';
 import Login from './components/auth/Login/Login';
 import LogOut from './components/auth/Logout/Logout';
+import AddCar from './components/feature/Add-Car/AddCar';
+import Details from './components/feature/Details/Details';
 
 // import firebase from './firebase';
 
@@ -27,7 +29,10 @@ function App() {
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={< LogOut/>} />
+        <Route path="/logout" element={<LogOut />} />
+        <Route path="/add-car" element={<AddCar />} />
+        {/* <Route path="/details:id" element={<Details />} /> */}
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
       <Footer></Footer>
     </div>

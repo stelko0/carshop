@@ -16,7 +16,7 @@ export default function Login() {
     // useEffect(() => {
     //   navigate('/');
     // }, []);
-    window.location.href = '/';
+    // window.location.href = '/';
     navigate('/')
   }
   return (

@@ -13,6 +13,9 @@ export default function UserNav() {
   return (
     <>
       <li>
+        <Link to="/add-car">Add Car</Link>
+      </li>
+      <li>
         <h2 id="user">{currentUser?.email}</h2>
       </li>
       <li>

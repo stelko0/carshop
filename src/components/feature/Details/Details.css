@@ -1,0 +1,67 @@
+.detailsCar {
+  padding: 4rem;
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 50px;
+}
+
+.detailsCar .detailImg {
+  width: 700px;
+}
+
+.detailsCar .detailList {
+  list-style: none;
+}
+
+.detailsCar .detailList h2 {
+  font-size: 38px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+}
+
+.detailsCar .detailList h5 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: 20px;
+}
+.buttons li {
+  display: inline-block;
+  margin: 6px;
+}
+
+.buttons li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.35rem 1.2rem;
+  border-radius: 6px;
+  font-size: 28px;
+  font-weight: 700;
+  transition: 0.5s;
+}
+
+#editBtn {
+  background-color: rgb(241, 136, 0);
+}
+#editBtn:hover {
+  background-color: rgb(177, 100, 0);
+  transition: 0.5s;
+}
+
+#deleteBtn {
+  background-color: rgb(241, 0, 0);
+}
+
+#deleteBtn:hover {
+  background-color: rgb(178, 0, 0);
+  transition: 0.5s;
+}
