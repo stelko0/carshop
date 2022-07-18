@@ -1,0 +1,38 @@
+.delete-car {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-car h1 {
+  padding-bottom: 1rem;
+  font-size: 38px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.delete-car h3 {
+  font-size: 26px;
+}
+
+.delete-car #delete-car-btn {
+  margin-top: 40px;
+  background-color: rgb(241, 0, 0);
+  outline: none;
+  border: none;
+  font-size: 30px;
+  padding: .45rem 1rem;
+  color: #fff;
+  border-radius: 6px;
+  transition: 0.5s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.delete-car #delete-car-btn:hover {
+  background-color: rgb(186, 0, 0);
+  transition: 0.5s;
+
+}

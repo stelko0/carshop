@@ -64,12 +64,12 @@ export default function Details() {
             <div className="buttons">
               <ul>
                 <li>
-                  <Link id="editBtn" to={`edit/${carId}`}>
+                  <Link id="editBtn" to={`/edit/${carId}`}>
                     Edit
                   </Link>
                 </li>
                 <li>
-                  <Link id="deleteBtn" to={`delete/${carId}`}>
+                  <Link id="deleteBtn" to={`/delete/${carId}`}>
                     Delete
                   </Link>
                 </li>
