@@ -18,6 +18,7 @@ export default function Login() {
     // }, []);
     // window.location.href = '/';
     navigate('/')
+    
   }
   return (
     <div id="loginContainer">

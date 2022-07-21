@@ -13,6 +13,7 @@ export default function AddCar() {
   const carId = strs.at(-1);
   const currentUser = useAuth();
   const [car, setCars] = useState([]);
+  const [username, setUser] = useState([]);
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `cars/${carId}`))
@@ -21,6 +22,7 @@ export default function AddCar() {
           let data = snapshot.val();
           if (data !== null) {
             setCars(data);
+            setUser(data)
           }
         } else {
           console.log('No data available');
@@ -39,9 +41,9 @@ export default function AddCar() {
   const priceRef = useRef();
   const descriptionRef = useRef();
 
-
   function handleChange(e) {
     setCars(e.target.value);
+  
   }
 
   async function handleAddCar(e) {
@@ -62,6 +64,7 @@ export default function AddCar() {
       priceData.length > 1 &&
       descriptionData.length > 1
     ) {
+      console.log(user.email);
       await editCar(
         brandRef.current.value,
         modelRef.current.value,
@@ -76,13 +79,24 @@ export default function AddCar() {
       alert('All field are required!');
     }
   }
-
+  let user = null;
+  const storedResp = localStorage.getItem('user');
+  if (storedResp) {
+    try {
+      user = JSON.parse(storedResp);
+    } catch (e) {}
+  }
+  // console.log(`${user?.email}, ${car.user}, ${car.brand}`);
   return (
     <>
+      {currentUser?.email !== username.user ? (
+      <h1 id="errorUser">Error!</h1>
+
+      ) : ( 
       <div id="car-container">
         <form action="" id="add" onSubmit={handleAddCar}>
           <h2>Edit Car</h2>
-          <div className="brandModel">
+          <div className="brandModel" onChange={handleChange} value={car.user}>
             <span className="brand">
               <label htmlFor="brand">Brand:</label>
               <input
@@ -179,6 +193,7 @@ export default function AddCar() {
           </div>
         </form>
       </div>
+      )};
     </>
   );
 }

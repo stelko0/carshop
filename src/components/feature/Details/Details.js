@@ -61,7 +61,7 @@ export default function Details() {
             </li>
           </ul>
           {currentUser?.email !== car.user ? null : (
-            <div className="buttons">
+            <div className="buttons" data-user={car.user}>
               <ul>
                 <li>
                   <Link id="editBtn" to={`/edit/${carId}`}>

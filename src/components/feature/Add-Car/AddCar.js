@@ -60,7 +60,6 @@ export default function AddCar() {
   }
 
   return (
-    <>
       <div id="car-container">
         <form action="" id="add" onSubmit={handleAddCar}>
           <h2>Add Car</h2>
@@ -127,6 +126,5 @@ export default function AddCar() {
           </div>
         </form>
       </div>
-    </>
   );
 }

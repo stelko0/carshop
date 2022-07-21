@@ -12,13 +12,14 @@ export default function DeleteCar() {
   const navigate = useNavigate();
   function handleDelete() {
     deleteCarRecord();
-    navigate('/')
-   }
+    navigate('/');
+  }
   const url = window.location.href;
   const strs = url.split('/');
   const carId = strs.at(-1);
   const currentUser = useAuth();
   const [car, setCars] = useState([]);
+  const [username, setUser] = useState([]);
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `cars/${carId}`))
@@ -27,6 +28,8 @@ export default function DeleteCar() {
           let data = snapshot.val();
           if (data !== null) {
             setCars(data);
+            setUser(data);
+
           }
         } else {
           console.log('No data available');
@@ -44,17 +47,25 @@ export default function DeleteCar() {
           <h1>Error 404</h1>
         </>
       ) : (
-        <div className="delete-car">
-          <h1>Are you sure to delete this car?</h1>
-          <h3>Brand: {car.brand}</h3>
-          <h3>Model: {car.model}</h3>
-          <h3>Millage: {car.millage}</h3>
-          <h3>Engine: {car.engine}</h3>
-          <h3>Phone: {car.phone}</h3>
-          <h3>Price: {car.price}$</h3>
-          <h3>Description: {car.description}</h3>
-          <button id='delete-car-btn' onClick={handleDelete}>Delete</button>
-        </div>
+        <>
+          {currentUser?.email !== username.user ? (
+            <h1>Error!</h1>
+          ) : (
+            <div className="delete-car">
+              <h1>Are you sure to delete this car?</h1>
+              <h3>Brand: {car.brand}</h3>
+              <h3>Model: {car.model}</h3>
+              <h3>Millage: {car.millage}</h3>
+              <h3>Engine: {car.engine}</h3>
+              <h3>Phone: {car.phone}</h3>
+              <h3>Price: {car.price}$</h3>
+              <h3>Description: {car.description}</h3>
+              <button id="delete-car-btn" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
